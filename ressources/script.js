@@ -44,10 +44,12 @@ knopf.addEventListener("click", function(){
     // feld leeren
     eingabefeld.value = "";
     // teilnehmer hinzufuegen
-    var neu = neuerTeilnehmer(wert);
-    fuegeTeilnehmerlisteHinzu(neu);
-    // liste darstellen
-    stelleListedar();
+    if (wert) {
+    	var neu = neuerTeilnehmer(wert);
+    	fuegeTeilnehmerlisteHinzu(neu);
+    	// liste darstellen
+    	stelleListedar();
+    }
 });
 
 var loeschenknopf = document.getElementById("loeschen");
@@ -79,12 +81,12 @@ function stelleListedar() {
     while (guiTeilnehmerliste.firstChild) {
       guiTeilnehmerliste.removeChild(guiTeilnehmerliste.firstChild);
   	}
-    // ul liste füllen
+    // ul liste fÃ¼llen
     for (var i=0; i < teilnehmerliste.length; i++) {
   		var li = document.createElement("li");
   		var textKnoten = document.createTextNode(teilnehmerliste[i].name);
   	 	li.appendChild(textKnoten);
-      // remove x an li hängen
+      // remove x an li hÃ¤ngen
       var span = document.createElement("span");
       var txt = document.createTextNode("x");
       span.className = "delete";
@@ -96,7 +98,7 @@ function stelleListedar() {
       guiTeilnehmerliste.appendChild(li);
   	}
     
-    // deletes funktion anhängen
+    // deletes funktion anhÃ¤ngen
     var deletes = document.getElementsByClassName("delete");
   	for (var j = 0; j < deletes .length; j++) {
     	deletes [j].onclick = function() {
